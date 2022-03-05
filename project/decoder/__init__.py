@@ -49,8 +49,11 @@ def getSummary(data):
             if genre == r_genre:
                 d1 = Counter(r_labels)
                 d2 = Counter(labelDict)
-                record['label'] = dict(d1+d2)
+                d3 = dict(d1+d2)
+                d3 = dict(sorted(d3.items(), key=lambda item:item[1], reverse=True))
+                record['label'] = d3
+                record['count'] += 1
                 flag = True
         if flag == False:
-            records.append({'genre':genre, 'label':labelDict})
+            records.append({'genre':genre, 'count':1, 'label':labelDict})
     return records
