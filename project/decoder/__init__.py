@@ -22,6 +22,7 @@ def fileDecoder(directory):
                     "label": anyz.label,
                     "stars": anyz.stars
                 }
+                print(f'decode abstract from {anyz.wid}')
                 dic.append(data)
     with open(f'../abstract/{directory}/abstract.json', 'w', encoding='utf-8') as f:
         json.dump(dic, f, ensure_ascii=False)
