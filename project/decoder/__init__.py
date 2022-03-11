@@ -2,6 +2,7 @@ import analyzer
 
 import os
 import json
+import logging
 from collections import Counter
     
 def fileDecoder(directory):
@@ -37,6 +38,7 @@ def fileEncoder(directory):
 def getSummary(data):
     records = []    
     for file in data:
+        print(f'collect abstract from {file.get("id")}')
         flag = False
         genre = file.get('genre')
         labels = file.get('label')
@@ -56,4 +58,5 @@ def getSummary(data):
                 flag = True
         if flag == False:
             records.append({'genre':genre, 'count':1, 'label':labelDict})
+        
     return records
